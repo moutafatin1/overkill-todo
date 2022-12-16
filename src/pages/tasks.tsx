@@ -36,8 +36,17 @@ const tasksData: Task[] = [
 const TasksPage = () => {
   const [selectedTab, setSelectedTab] = useState<Tabs>("all");
   const [tasks, setTasks] = useState<Task[]>(tasksData);
-  console.log("🚀 ~ file: tasks.tsx:39 ~ TasksPage ~ tasks", tasks);
   const setTab = (name: string) => setSelectedTab(name as Tabs);
+
+  const filteredTasks = () => {
+    if (selectedTab === "active") {
+      return tasks.filter((task) => task.completed !== true);
+    }
+    if (selectedTab === "completed") {
+      return tasks.filter((task) => task.completed === true);
+    }
+    return tasks;
+  };
   const addNewTask = (task: string) => {
     const newTask: Task = {
       id: tasks.length + 1,
@@ -55,6 +64,10 @@ const TasksPage = () => {
     });
     setTasks(newTasks);
   };
+
+  const deleteTaskById = (id: number) => {
+    setTasks((old) => old.filter((task) => task.id !== id));
+  };
   return (
     <main className="mx-auto mt-16 max-w-3xl space-y-8">
       <h1 className="text-center text-4xl font-bold text-gray-700">#todos</h1>
@@ -64,7 +77,11 @@ const TasksPage = () => {
         setSelectedTab={setTab}
       />
       <AddNewTask addNewTask={addNewTask} />
-      <TasksList tasks={tasks} updateTaskStatus={updateTaskStatus} />
+      <TasksList
+        tasks={filteredTasks()}
+        updateTaskStatus={updateTaskStatus}
+        deleteTaskById={deleteTaskById}
+      />
     </main>
   );
 };
