@@ -3,13 +3,14 @@ import { TaskItem } from "./TaskItem";
 
 type TasksListProps = {
   tasks: Task[];
+  updateTaskStatus : (task:Task) => void
 };
 
-export const TasksList = ({ tasks }: TasksListProps) => {
+export const TasksList = ({ tasks,updateTaskStatus }: TasksListProps) => {
   return (
-    <ul className="mt-12 space-y-4">
+    <ul className="space-y-4">
       {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} />
+        <TaskItem key={task.id} task={task} updateTaskStatus={updateTaskStatus} />
       ))}
     </ul>
   );

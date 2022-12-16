@@ -10,7 +10,7 @@ type TabsProps = {
 
 export const Tabs = ({ selectedTab, items, setSelectedTab }: TabsProps) => {
   return (
-    <nav className=" mt-12 flex items-center justify-around border-b border-gray-400 pb-4">
+    <nav className="flex items-center justify-around border-b border-gray-400 pb-4">
       {items.map((item) => (
         <TabItem
           key={item.name}
