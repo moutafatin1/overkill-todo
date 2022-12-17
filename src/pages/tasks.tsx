@@ -1,9 +1,11 @@
+import type { GetServerSideProps } from "next";
 import type { ReactElement } from "react";
 import { useState } from "react";
 import { AddNewTask } from "../components/AddNewTask";
 import { SidebarLayout } from "../components/layout/SidebarLayout";
 import { Tabs } from "../components/Tabs";
 import { TasksList } from "../components/TasksList";
+import { getServerAuthSession } from "../server/common/get-server-auth-session";
 import type { NextPageWithLayout } from "./_app";
 
 type Tabs = "all" | "active" | "completed";
@@ -93,4 +95,21 @@ export default TasksPage;
 
 TasksPage.getLayout = (page: ReactElement) => {
   return <SidebarLayout>{page}</SidebarLayout>;
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getServerAuthSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {
+      session,
+    },
+  };
 };
