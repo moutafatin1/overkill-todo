@@ -13,23 +13,21 @@ export const taskRouter = router({
               z.literal("completed"),
               z.literal("active"),
             ])
-            .optional(),
+            .optional()
+            .default("all"),
         })
         .optional()
     )
     .query(({ ctx, input }) => {
-      const filter = input?.filter ?? "all";
       return ctx.prisma.task.findMany({
         where: {
           userId: ctx.session.user.id,
-          ...{
-            completed:
-              filter === "completed"
-                ? true
-                : filter === "active"
-                ? false
-                : undefined,
-          },
+          completed:
+            input?.filter === "completed"
+              ? true
+              : input?.filter === "active"
+              ? false
+              : undefined,
         },
       });
     }),
