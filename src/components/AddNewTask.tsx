@@ -9,7 +9,7 @@ import { Form } from "./common/forms/Form";
 export const AddNewTask = () => {
   const utils = trpc.useContext();
   const addNewTaskMutation = trpc.task.new.useMutation();
-
+   
   return (
     <Form<newTaskFormData, typeof newTaskSchema>
       className="flex items-center gap-2"

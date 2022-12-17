@@ -40,7 +40,10 @@ export const Form = <
   return (
     <form
       className={fn(className)}
-      onSubmit={methods.handleSubmit(onSubmit)}
+      onSubmit={methods.handleSubmit((data) => {
+        onSubmit(data);
+        methods.reset();
+      })}
       id={id}
     >
       {children(methods)}
