@@ -5,14 +5,29 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import type { ReactNode } from "react";
 import React, { Fragment } from "react";
-import { AiFillHome, AiOutlineLogout } from "react-icons/ai";
+import {
+  AiFillCheckSquare,
+  AiFillHome,
+  AiFillStar,
+  AiOutlineLogout,
+} from "react-icons/ai";
 import { fn } from "../../../utils/fn";
 import { TransitionOpacity } from "../TransitionOpacity";
 const sidebarNavigation = [
   {
-    name: "Home",
-    href: "/tasks",
+    name: "Tasks",
+    href: "/tasks/all",
     icon: <AiFillHome />,
+  },
+  {
+    name: "Important",
+    href: "/tasks/active",
+    icon: <AiFillStar />,
+  },
+  {
+    name: "Completed",
+    href: "/tasks/completed",
+    icon: <AiFillCheckSquare />,
   },
 ];
 
