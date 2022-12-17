@@ -44,9 +44,6 @@ const TasksPage: NextPageWithLayout = () => {
   const [selectedTab, setSelectedTab] = useState<Tabs>("all");
   const setTab = (name: string) => setSelectedTab(name as Tabs);
 
-  
- 
-
   const { data, isLoading, error } = trpc.task.all.useQuery();
   if (isLoading) {
     return <Spinner show={isLoading} delay={400} />;
@@ -62,11 +59,8 @@ const TasksPage: NextPageWithLayout = () => {
         items={tabItems}
         setSelectedTab={setTab}
       />
-      <AddNewTask  />
-      <TasksList
-        tasks={data}
-        
-      />
+      <AddNewTask />
+      <TasksList tasks={data} />
     </main>
   );
 };
