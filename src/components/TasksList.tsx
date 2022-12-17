@@ -1,26 +1,15 @@
-import type { Task } from "../pages/tasks";
+import type { Task } from "@prisma/client";
 import { TaskItem } from "./TaskItem";
 
 type TasksListProps = {
   tasks: Task[];
-  updateTaskStatus: (task: Task) => void;
-  deleteTaskById: (id: number) => void;
 };
 
-export const TasksList = ({
-  tasks,
-  updateTaskStatus,
-  deleteTaskById,
-}: TasksListProps) => {
+export const TasksList = ({ tasks }: TasksListProps) => {
   return (
     <ul className="space-y-4">
       {tasks.map((task) => (
-        <TaskItem
-          key={task.id}
-          task={task}
-          updateTaskStatus={updateTaskStatus}
-          deleteTaskById={deleteTaskById}
-        />
+        <TaskItem key={task.id} task={task} />
       ))}
     </ul>
   );

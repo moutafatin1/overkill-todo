@@ -2,11 +2,9 @@ import { useState } from "react";
 import { InputField } from "./common";
 import Button from "./common/elements/Buttons";
 
-type AddNewTaskProps = {
-  addNewTask: (task: string) => void;
-};
+// type AddNewTaskProps = {};
 
-export const AddNewTask = ({ addNewTask }: AddNewTaskProps) => {
+export const AddNewTask = () => {
   const [taskText, setTaskText] = useState("");
   return (
     <div className="flex items-center gap-2">
@@ -17,7 +15,6 @@ export const AddNewTask = ({ addNewTask }: AddNewTaskProps) => {
       />
       <Button
         onClick={() => {
-          addNewTask(taskText);
           setTaskText("");
         }}
       >
