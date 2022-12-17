@@ -12,6 +12,7 @@ export const AddNewTask = () => {
 
   return (
     <Form<newTaskFormData, typeof newTaskSchema>
+      className="flex items-center gap-2"
       schema={newTaskSchema}
       onSubmit={({ text }) => {
         addNewTaskMutation.mutate(
@@ -32,6 +33,7 @@ export const AddNewTask = () => {
             {...register("text")}
             errorMessage={errors.text?.message}
           />
+
           <Button>Add</Button>
         </>
       )}
