@@ -69,10 +69,11 @@ const TasksPage: NextPageWithLayout = () => {
     });
     setTasks(newTasks);
   };
-
+  
   const deleteTaskById = (id: number) => {
     setTasks((old) => old.filter((task) => task.id !== id));
   };
+
   return (
     <main className="mx-auto mt-16 max-w-3xl space-y-8">
       <h1 className="text-center text-4xl font-bold text-gray-700">#todos</h1>
