@@ -1,7 +1,10 @@
+import type { ReactElement } from "react";
 import { useState } from "react";
 import { AddNewTask } from "../components/AddNewTask";
+import { SidebarLayout } from "../components/layout/SidebarLayout";
 import { Tabs } from "../components/Tabs";
 import { TasksList } from "../components/TasksList";
+import type { NextPageWithLayout } from "./_app";
 
 type Tabs = "all" | "active" | "completed";
 export type Task = {
@@ -33,7 +36,7 @@ const tasksData: Task[] = [
   },
 ];
 
-const TasksPage = () => {
+const TasksPage: NextPageWithLayout = () => {
   const [selectedTab, setSelectedTab] = useState<Tabs>("all");
   const [tasks, setTasks] = useState<Task[]>(tasksData);
   const setTab = (name: string) => setSelectedTab(name as Tabs);
@@ -87,3 +90,7 @@ const TasksPage = () => {
 };
 
 export default TasksPage;
+
+TasksPage.getLayout = (page: ReactElement) => {
+  return <SidebarLayout>{page}</SidebarLayout>;
+};
