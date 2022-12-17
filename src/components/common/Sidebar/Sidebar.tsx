@@ -58,7 +58,7 @@ export function Sidebar({ isOpen, closeSidebar }: SidebarProps) {
 Sidebar.Header = function Header() {
   return (
     <div className="px-4">
-      <h1 className="text-3xl font-bold text-white">Expense App</h1>
+      <h1 className="text-3xl font-bold text-white">Todos App</h1>
     </div>
   );
 };
