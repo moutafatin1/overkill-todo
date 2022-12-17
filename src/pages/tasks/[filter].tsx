@@ -14,9 +14,13 @@ type TasksFilter = RouterInputs["task"]["all"];
 
 const TasksPage: NextPageWithLayout = () => {
   const router = useRouter();
-  const { data, isLoading, error } = trpc.task.all.useQuery({
-    filter: router.query["filter"],
-  } as TasksFilter);
+  const query: TasksFilter = router.query;
+  // hacky solution
+  if (!["all", "active", "completed"].includes(query.filter as string)) {
+    return <p>404</p>;
+  }
+  const { data, isLoading, error } = trpc.task.all.useQuery(query);
+
   if (isLoading) {
     return <Spinner show={isLoading} delay={400} />;
   }
