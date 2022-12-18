@@ -23,4 +23,13 @@ export const folderRouter = router({
         },
       });
     }),
+  deleteById: protectedProcedure
+    .input(z.string())
+    .mutation(({ ctx, input }) => {
+      return ctx.prisma.folder.delete({
+        where: {
+          id: input,
+        },
+      });
+    }),
 });
