@@ -1,5 +1,6 @@
 import React from "react";
 import { AiFillExclamationCircle } from "react-icons/ai";
+import { fn } from "../../../utils/fn";
 
 type InputWrapperProps = {
   label?: string;
@@ -23,7 +24,7 @@ export const InputWrapper = ({
   required,
 }: InputWrapperProps) => {
   return (
-    <label className="w-full space-y-1">
+    <label className={fn("w-full space-y-1", className)}>
       {label && (
         <span className="mb-1 block text-sm font-medium capitalize text-gray-700">
           {label} {required && "*"}

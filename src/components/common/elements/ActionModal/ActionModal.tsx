@@ -30,7 +30,7 @@ export const ActionModal = ({
             {title}
           </ModalTitle>
           <div>{children}</div>
-          <div className="flex items-center justify-end gap-2">
+          <div className="flex items-center justify-end gap-2 pt-4">
             {confirmButton}
             <Button onClick={close} variant="danger" className="capitalize">
               {cancelButtonText}

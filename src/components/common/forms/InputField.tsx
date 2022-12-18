@@ -8,6 +8,7 @@ type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   errorMessage?: string[] | string;
+  wrapperClassName?: string;
 };
 
 export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
@@ -20,6 +21,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
       className,
       name,
       required,
+      wrapperClassName,
       ...props
     },
     ref
@@ -32,6 +34,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
         errorMessage={errorMessage}
         required={required}
         name={name}
+        className={wrapperClassName}
       >
         <input
           ref={ref}
