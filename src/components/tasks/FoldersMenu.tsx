@@ -9,8 +9,11 @@ export const FoldersMenu = () => {
   if (error) return <p> {error.message}</p>;
   return (
     <>
+      <h3 className="mt-6 pl-4 text-sm font-medium uppercase tracking-wider text-gray-500">
+        folders
+      </h3>
       {folders.map((folder) => (
-        <Disclosure key={folder.id} as="div" className="space-y-1 p-2">
+        <Disclosure key={folder.id} as="div" className="space-y-1   p-2">
           {({ open }) => (
             <>
               <Disclosure.Button
