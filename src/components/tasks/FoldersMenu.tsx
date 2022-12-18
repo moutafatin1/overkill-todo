@@ -48,11 +48,14 @@ export const FoldersMenu = () => {
                   {folder.name}
                 </Disclosure.Button>
 
-                <FolderOptions
-                  className={fn(
-                    showOption === folder.id ? "opacity-100" : "opacity-0"
-                  )}
-                />
+                {showOption === folder.id && (
+                  <FolderOptions
+                    folder={folder}
+                    // className={fn(
+                    //   showOption === folder.id ? "opacity-100" : "opacity-0"
+                    // )}
+                  />
+                )}
               </div>
               <Disclosure.Panel className="space-y-1">
                 {folder.List.map((list) => (

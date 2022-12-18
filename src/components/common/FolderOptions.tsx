@@ -1,14 +1,23 @@
 import { Menu, Transition } from "@headlessui/react";
+import type { Folder, List } from "@prisma/client";
 import { Fragment } from "react";
 import { FaEllipsisV } from "react-icons/fa";
-import { HiPencil, HiTrash } from "react-icons/hi";
+import { HiPencil } from "react-icons/hi";
+import { DeleteFolder } from "../../features/folder/DeleteFolder";
 import { fn } from "../../utils/fn";
 
 type FolderOptionsProps = {
   className?: string;
+  folder: Folder & {
+    List: List[];
+  };
 };
 
-export const FolderOptions = ({ className }: FolderOptionsProps) => {
+export const FolderOptions = ({ className, folder }: FolderOptionsProps) => {
+  console.log(
+    "🚀 ~ file: FolderOptions.tsx:17 ~ FolderOptions ~ folder",
+    folder.id
+  );
   return (
     <Menu as="div" className={fn("relative inline-block text-left", className)}>
       <div>
@@ -35,7 +44,7 @@ export const FolderOptions = ({ className }: FolderOptionsProps) => {
                   <button
                     className={fn(
                       "group flex w-full items-center gap-2 px-4 py-2 text-gray-600",
-                      active && "bg-gray-200"
+                      "hover:bg-gray-200"
                     )}
                   >
                     <HiPencil className="h-5 w-6 group-hover:text-teal-500" />
@@ -44,17 +53,7 @@ export const FolderOptions = ({ className }: FolderOptionsProps) => {
                 )}
               </Menu.Item>
               <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={fn(
-                      "group flex w-full items-center gap-2 px-4 py-2 text-gray-600",
-                      active && "bg-gray-200"
-                    )}
-                  >
-                    <HiTrash className="h-5 w-6 group-hover:text-red-500" />
-                    Delete
-                  </button>
-                )}
+                <DeleteFolder folderId={folder.id} />
               </Menu.Item>
             </div>
           </Menu.Items>
