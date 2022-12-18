@@ -17,7 +17,7 @@ model Task {
   userId    String
   listId    String?
 
-  List      List?    @relation(fields: [listId], references: [id])
+  List      List?    @relation(fields: [listId], references: [id], onDelete: Cascade)
   user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -27,9 +27,9 @@ model List {
   id       String  @id @default(cuid())
   name     String
   folderId String?
-  userId String?
+  userId   String?
 
-  Folder Folder? @relation(fields: [folderId], references: [id])
+  Folder Folder? @relation(fields: [folderId], references: [id], onDelete: Cascade)
   User   User?   @relation(fields: [userId], references: [id])
   Task   Task[]
 }
@@ -38,9 +38,9 @@ model Folder {
   id     String  @id @default(cuid())
   name   String
   userId String?
-  
-  User   User?   @relation(fields: [userId], references: [id])
-  List   List[]
+
+  User User?  @relation(fields: [userId], references: [id])
+  List List[]
 }
 
 // Necessary for Next auth
