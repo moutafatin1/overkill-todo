@@ -12,6 +12,7 @@ import {
   AiOutlineLogout,
 } from "react-icons/ai";
 import { fn } from "../../../utils/fn";
+import { FoldersMenu } from "../../tasks/FoldersMenu";
 import { TransitionOpacity } from "../TransitionOpacity";
 const sidebarNavigation = [
   {
@@ -64,6 +65,7 @@ export function Sidebar({ isOpen, closeSidebar }: SidebarProps) {
       <div className="inset-y-0 hidden  flex-1  flex-col bg-gray-800 pt-5 md:fixed  md:flex md:w-72">
         <Sidebar.Header />
         <Sidebar.Nav />
+
         <Sidebar.Footer />
       </div>
     </>
@@ -88,6 +90,7 @@ Sidebar.Nav = function Nav() {
           </Sidebar.NavItem>
         ))}
       </nav>
+      <FoldersMenu />
     </div>
   );
 };
@@ -106,7 +109,7 @@ Sidebar.NavItem = function NavItem({ children, href, icon }: NavItemProps) {
     <Link
       href={href}
       className={fn(
-        "flex items-center rounded-md p-2 font-medium text-gray-300",
+        "flex items-center rounded-md p-2 font-medium text-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
         isActive && "bg-gray-900 text-white",
         !isActive &&
           "transition-colors duration-200 hover:bg-gray-700 hover:text-gray-100"
