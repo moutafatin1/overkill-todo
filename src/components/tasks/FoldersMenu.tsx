@@ -2,6 +2,7 @@ import { Disclosure } from "@headlessui/react";
 import { fn } from "../../utils/fn";
 import { trpc } from "../../utils/trpc";
 import { Spinner } from "../common";
+import { CreateNewFolder } from "./CreateNewFolder";
 
 export const FoldersMenu = () => {
   const { data: folders, isLoading, error } = trpc.folder.all.useQuery();
@@ -9,11 +10,14 @@ export const FoldersMenu = () => {
   if (error) return <p> {error.message}</p>;
   return (
     <>
-      <h3 className="mt-6 pl-4 text-sm font-medium uppercase tracking-wider text-gray-500">
-        folders
-      </h3>
+      <div className="mt-6 flex items-center justify-between px-4">
+        <h3 className=" text-sm font-medium uppercase tracking-wider text-gray-500">
+          folders
+        </h3>
+        <CreateNewFolder />
+      </div>
       {folders.map((folder) => (
-        <Disclosure key={folder.id} as="div" className="space-y-1   p-2">
+        <Disclosure key={folder.id} as="div" className="space-y-1 p-2">
           {({ open }) => (
             <>
               <Disclosure.Button
