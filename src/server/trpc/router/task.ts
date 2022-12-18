@@ -7,14 +7,7 @@ export const taskRouter = router({
     .input(
       z
         .object({
-          filter: z
-            .union([
-              z.literal("all"),
-              z.literal("completed"),
-              z.literal("active"),
-            ])
-            .optional()
-            .default("all"),
+          filter: z.enum(["all", "active", "completed"]).default("all"),
         })
         .optional()
     )
