@@ -15,10 +15,32 @@ model Task {
   text      String
   completed Boolean @default(false)
   userId    String
+  listId    String?
 
+  List      List?    @relation(fields: [listId], references: [id])
   user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model List {
+  id       String  @id @default(cuid())
+  name     String
+  folderId String?
+  userId String?
+
+  Folder Folder? @relation(fields: [folderId], references: [id])
+  User   User?   @relation(fields: [userId], references: [id])
+  Task   Task[]
+}
+
+model Folder {
+  id     String  @id @default(cuid())
+  name   String
+  userId String?
+  
+  User   User?   @relation(fields: [userId], references: [id])
+  List   List[]
 }
 
 // Necessary for Next auth
@@ -57,6 +79,8 @@ model User {
   accounts      Account[]
   sessions      Session[]
   Task          Task[]
+  List          List[]
+  Folder        Folder[]
 }
 
 model VerificationToken {
