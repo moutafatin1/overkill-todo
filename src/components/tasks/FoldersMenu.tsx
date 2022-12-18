@@ -1,9 +1,9 @@
 import { Disclosure } from "@headlessui/react";
 import { useState } from "react";
-import { FaEllipsisV } from "react-icons/fa";
 import { fn } from "../../utils/fn";
 import { trpc } from "../../utils/trpc";
 import { Spinner } from "../common";
+import { FolderOptions } from "../common/FolderOptions";
 import { CreateNewFolder } from "./CreateNewFolder";
 
 export const FoldersMenu = () => {
@@ -26,7 +26,6 @@ export const FoldersMenu = () => {
               <div
                 className="flex items-center gap-2"
                 onMouseEnter={() => setShowOption(folder.id)}
-                onMouseLeave={() => setShowOption("")}
               >
                 <Disclosure.Button
                   className={fn(
@@ -48,11 +47,12 @@ export const FoldersMenu = () => {
                   </svg>
                   {folder.name}
                 </Disclosure.Button>
-                {showOption === folder.id && (
-                  <button className="ml-auto rounded-lg p-1 text-gray-200 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-1 focus:ring-purple-400">
-                    <FaEllipsisV className="text-xl" />
-                  </button>
-                )}
+
+                <FolderOptions
+                  className={fn(
+                    showOption === folder.id ? "opacity-100" : "opacity-0"
+                  )}
+                />
               </div>
               <Disclosure.Panel className="space-y-1">
                 {folder.List.map((list) => (
