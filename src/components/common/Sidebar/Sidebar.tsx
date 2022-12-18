@@ -82,7 +82,7 @@ Sidebar.Header = function Header() {
 
 Sidebar.Nav = function Nav() {
   return (
-    <div className="mt-5 h-0 flex-1 overflow-y-auto">
+    <div className="mt-5  h-0 flex-1  overflow-y-auto">
       <nav className="mt-5 space-y-2 px-2">
         {sidebarNavigation.map((item) => (
           <Sidebar.NavItem key={item.name} icon={item.icon} href={item.href}>
@@ -90,7 +90,9 @@ Sidebar.Nav = function Nav() {
           </Sidebar.NavItem>
         ))}
       </nav>
-      <FoldersMenu />
+      <div className="mt-24">
+        <FoldersMenu />
+      </div>
     </div>
   );
 };
