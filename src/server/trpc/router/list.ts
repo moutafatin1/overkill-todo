@@ -18,4 +18,12 @@ export const listRouter = router({
         },
       });
     }),
+
+  delete: protectedProcedure.input(z.string()).mutation(({ ctx, input }) => {
+    return ctx.prisma.list.delete({
+      where: {
+        id: input,
+      },
+    });
+  }),
 });
