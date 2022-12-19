@@ -32,4 +32,22 @@ export const folderRouter = router({
         },
       });
     }),
+
+  edit: protectedProcedure
+    .input(
+      z.object({
+        id: z.string(),
+        name: z.string().optional(),
+      })
+    )
+    .mutation(({ ctx, input }) => {
+      return ctx.prisma.folder.update({
+        data: {
+          name: input.name,
+        },
+        where: {
+          id: input.id,
+        },
+      });
+    }),
 });

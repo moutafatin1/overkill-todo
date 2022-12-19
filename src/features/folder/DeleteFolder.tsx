@@ -1,16 +1,19 @@
 import { HiTrash } from "react-icons/hi";
 import Button from "../../components/common/elements/Buttons";
 import { ConfirmationModal } from "../../components/common/elements/ConfirmationModal";
-import { fn } from "../../utils/fn";
 import { trpc } from "../../utils/trpc";
+import { useAutoModal } from "../hooks";
 
 type DeleteFolderProps = {
   folderId: string;
+  isOpen:boolean
 };
 
-export const DeleteFolder = ({ folderId }: DeleteFolderProps) => {
+export const DeleteFolder = ({ folderId ,isOpen}: DeleteFolderProps) => {
   const utils = trpc.useContext();
   const deleteFolderMutation = trpc.folder.deleteById.useMutation();
+  const btnRef = useAutoModal(isOpen);
+
   const deleteFolder = () => {
     deleteFolderMutation.mutate(folderId, {
       onSuccess: () => {
@@ -25,13 +28,11 @@ export const DeleteFolder = ({ folderId }: DeleteFolderProps) => {
       body="Do you really want to delete this folder? this will delete all your lists and tasks withing this folder"
       triggerButton={(open) => (
         <button
+        ref={btnRef}
           onClick={open}
-          className={fn(
-            "group flex w-full items-center gap-2 px-4 py-2 text-gray-600 transition-colors hover:bg-gray-200"
-          )}
+          className="hidden"
         >
-          <HiTrash className="h-5 w-6 transition-colors group-hover:text-red-500" />
-          Delete
+          hidden delete trigger
         </button>
       )}
       confirmButton={

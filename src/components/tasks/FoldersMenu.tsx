@@ -8,6 +8,10 @@ import { CreateNewFolder } from "./CreateNewFolder";
 
 export const FoldersMenu = () => {
   const [showOption, setShowOption] = useState("");
+  console.log(
+    "🚀 ~ file: FoldersMenu.tsx:11 ~ FoldersMenu ~ showOption",
+    showOption
+  );
   const { data: folders, isLoading, error } = trpc.folder.all.useQuery();
   if (isLoading) return <Spinner show={isLoading} delay={400} />;
   if (error) return <p> {error.message}</p>;
@@ -48,14 +52,7 @@ export const FoldersMenu = () => {
                   {folder.name}
                 </Disclosure.Button>
 
-                {showOption === folder.id && (
-                  <FolderOptions
-                    folder={folder}
-                    // className={fn(
-                    //   showOption === folder.id ? "opacity-100" : "opacity-0"
-                    // )}
-                  />
-                )}
+                {showOption === folder.id && <FolderOptions folder={folder} />}
               </div>
               <Disclosure.Panel className="space-y-1">
                 {folder.List.map((list) => (
