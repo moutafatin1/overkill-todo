@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export const useAutoModal = (isOpen: boolean) => {
-  console.log("🚀 ~ file: hooks.ts:4 ~ useAutoModal ~ isOpen", isOpen);
+export const useAutoActionModal = (isOpen: boolean) => {
   const btnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {

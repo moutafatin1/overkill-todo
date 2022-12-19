@@ -1,10 +1,10 @@
 import { HiExclamationCircle, HiInformationCircle } from "react-icons/hi";
-import { fn } from "../../../utils/fn";
-import { useActionModal } from "./ActionModal/hooks";
-import Button from "./Buttons";
-import { Modal, ModalPanel, ModalTitle } from "./Modal";
+import { fn } from "../../../../utils/fn";
+import { useActionModal } from "../ActionModal/hooks";
+import Button from "../Buttons";
+import { Modal, ModalPanel, ModalTitle } from "../Modal";
 
-export type ConfirmationDialogProps = {
+export type ConfirmationModalProps = {
   triggerButton: (open: () => void) => React.ReactElement;
   confirmButton: React.ReactElement;
   title: string;
@@ -22,7 +22,7 @@ export const ConfirmationModal = ({
   cancelButtonText = "Cancel",
   icon = "danger",
   isDone = false,
-}: ConfirmationDialogProps) => {
+}: ConfirmationModalProps) => {
   const { close, isOpen, open } = useActionModal(isDone);
   return (
     <>

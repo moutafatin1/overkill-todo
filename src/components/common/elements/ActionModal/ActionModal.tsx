@@ -3,7 +3,7 @@ import Button from "../Buttons";
 import { Modal, ModalPanel, ModalTitle } from "../Modal";
 import { useActionModal } from "./hooks";
 
-type ActionModalProps = {
+export type ActionModalProps = {
   triggerButton: (open: () => void) => React.ReactElement;
   confirmButton: React.ReactNode;
   title: string;
