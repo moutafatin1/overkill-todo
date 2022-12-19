@@ -1,28 +1,10 @@
-# Create T3 App
+## Ok this is the last time That I will  create a todo app
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
 
-## What's next? How do I make an app with this?
+![image](https://user-images.githubusercontent.com/79634799/208411376-0748b39b-db3e-4287-a36e-a34a6b1b4fcb.png)
+![image](https://user-images.githubusercontent.com/79634799/208411436-95b6d752-85ab-47d2-8ce6-ea4faa51ecfa.png)
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
-
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
-
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
-
-## Learn More
-
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+-Right click list (Context Menu)
+  ![image](https://user-images.githubusercontent.com/79634799/208411565-a89d904e-7e98-4976-852e-08e0a5475a10.png)
+![image](https://user-images.githubusercontent.com/79634799/208411824-4e60f7f3-d059-41c6-94ae-2b0401de62bb.png)
+![image](https://user-images.githubusercontent.com/79634799/208411902-4cbba8a6-7f6a-408c-8998-37046f5d5fef.png)
