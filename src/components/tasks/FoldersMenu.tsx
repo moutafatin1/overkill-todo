@@ -16,6 +16,10 @@ export const FoldersMenu = () => {
     edit: "",
     delete: "",
   });
+  console.log(
+    "🚀 ~ file: FoldersMenu.tsx:19 ~ FoldersMenu ~ showListOptionModal",
+    showListOptionModal
+  );
   const [points, setPoints] = useState({ x: 0, y: 0 });
   useEffect(() => {
     const handleClick = () => setShowMenu(false);
@@ -67,6 +71,10 @@ export const FoldersMenu = () => {
               <Disclosure.Panel className="space-y-1">
                 {folder.List.map((list) => (
                   <div key={list.id}>
+                    <DeleteList
+                      isOpen={showListOptionModal.delete === list.id}
+                      id={list.id}
+                    />
                     <button
                       onContextMenu={(e: MouseEvent) => {
                         console.log("Context menu opened");
@@ -82,10 +90,6 @@ export const FoldersMenu = () => {
                     >
                       {list.name}
                     </button>
-                    <DeleteList
-                      isOpen={showListOptionModal.delete === list.id}
-                      id={list.id}
-                    />
 
                     {showMenu && (
                       <ContextMenu
