@@ -1,10 +1,10 @@
 import { Disclosure } from "@headlessui/react";
 import { useState } from "react";
+import { CreateNewFolder } from "../../features/folder/CreateNewFolder";
 import { fn } from "../../utils/fn";
 import { trpc } from "../../utils/trpc";
 import { Spinner } from "../common";
 import { FolderOptions } from "../common/FolderOptions";
-import { CreateNewFolder } from "./CreateNewFolder";
 
 export const FoldersMenu = () => {
   const [showOption, setShowOption] = useState("");

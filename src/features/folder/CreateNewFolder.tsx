@@ -1,10 +1,10 @@
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { z } from "zod";
+import { InputField } from "../../components/common";
+import { ActionModal } from "../../components/common/elements/ActionModal/ActionModal";
+import Button from "../../components/common/elements/Buttons";
+import { Form } from "../../components/common/forms/Form";
 import { trpc } from "../../utils/trpc";
-import { InputField } from "../common";
-import { ActionModal } from "../common/elements/ActionModal/ActionModal";
-import Button from "../common/elements/Buttons";
-import { Form } from "../common/forms/Form";
 
 const newFolderSchema = z.object({
   name: z.string().min(1, "folder name is required"),
